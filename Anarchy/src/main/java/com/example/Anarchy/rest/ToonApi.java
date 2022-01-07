@@ -1,5 +1,7 @@
 package com.example.Anarchy.rest;
 
+import com.example.Anarchy.domain.model.Toon;
+import com.example.Anarchy.domain.repository.ToonRepository;
 import com.example.Anarchy.dto.ToonRequest;
 import com.example.Anarchy.dto.ToonResponse;
 import com.example.Anarchy.service.ToonService;
@@ -14,9 +16,11 @@ import java.util.List;
 @RestController
 public class ToonApi {
     private final ToonService toonService;
+    private final ToonRepository toonRepository;
 
-    public ToonApi(ToonService toonService) {
+    public ToonApi(ToonService toonService, ToonRepository toonRepository) {
         this.toonService = toonService;
+        this.toonRepository = toonRepository;
     }
     @PostMapping(value = "/api/v1/toon", consumes = "application/json", produces = "application/json")
     public ResponseEntity<?> save(@RequestBody ToonRequest toonRequest){
@@ -41,5 +45,14 @@ public class ToonApi {
             return ResponseEntity.notFound().build();
 
         return ResponseEntity.ok(toonResponse);
+    }
+    @PutMapping(value="api/v1/toon/{id}")
+    public ResponseEntity<Toon> update(@PathVariable Long id, @RequestBody Toon changeLvl){
+        return toonRepository.findById(id)
+                .map(toon -> {
+                    toon.setLevel(changeLvl.getLevel());
+                    Toon lvlUpdated = toonRepository.save(toon);
+                    return ResponseEntity.ok().body(lvlUpdated);
+                }).orElse(ResponseEntity.notFound().build());
     }
 }

@@ -7,7 +7,7 @@ const DkpSystem = () => import(/* webpackChunkName: "dashboard" */"@/pages/DkpSy
 const Profile = () => import(/* webpackChunkName: "common" */ "@/pages/Profile.vue");
 const Notifications = () => import(/* webpackChunkName: "common" */"@/pages/Notifications.vue");
 const Items = () => import(/* webpackChunkName: "common" */ "@/pages/Items.vue");
-const Maps = () => import(/* webpackChunkName: "common" */ "@/pages/Maps.vue");
+const Clans = () => import(/* webpackChunkName: "common" */ "@/pages/Clans.vue");
 const Teste = () => import(/* webpackChunkName: "common" */ "@/pages/Teste.vue");
 const TableList = () => import(/* webpackChunkName: "common" */ "@/pages/TableList.vue");
 
@@ -38,9 +38,9 @@ const routes = [
         component: Items
       },
       {
-        path: "maps",
-        name: "maps",
-        component: Maps
+        path: "clan",
+        name: "clans",
+        component: Clans
       },
       {
         path: "teste",

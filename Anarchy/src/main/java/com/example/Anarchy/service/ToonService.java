@@ -1,9 +1,8 @@
 package com.example.Anarchy.service;
 
 import com.example.Anarchy.config.converter.ToonResponseConverter;
-import com.example.Anarchy.domain.model.Toon;
-import com.example.Anarchy.domain.model.Role;
 import com.example.Anarchy.domain.model.StatusEnum;
+import com.example.Anarchy.domain.model.Toon;
 import com.example.Anarchy.domain.repository.ToonRepository;
 import com.example.Anarchy.dto.ToonRequest;
 import com.example.Anarchy.dto.ToonResponse;
@@ -32,13 +31,7 @@ public class ToonService {
                 .nome(toonRequest.getNome())
                 .status(StatusEnum.ATIVO)
                 .dataCadastro(LocalDateTime.now())
-                .role(Role.builder()
-                        .id(classeResquest.getId())
-                        .abreviacao(classeResquest.getAbreviacao())
-                        .nome(classeResquest.getNome())
-                        .dataCadastro(LocalDateTime.now())
-                        .status(StatusEnum.ATIVO)
-                        .build())
+                .role(toonRequest.getRole())
                 .level(toonRequest.getLevel())
                 .build();
         toonRepository.save(toon);

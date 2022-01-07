@@ -1,8 +1,10 @@
 <template>
+<v-app>
   <div>
     <notifications></notifications>
     <router-view :key="$route.fullPath"></router-view>
   </div>
+  </v-app>
 </template>
 
 <script>

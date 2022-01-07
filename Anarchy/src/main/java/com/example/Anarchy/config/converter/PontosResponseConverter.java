@@ -1,9 +1,8 @@
 package com.example.Anarchy.config.converter;
 
-import com.example.Anarchy.domain.model.Toon;
 import com.example.Anarchy.domain.model.Pontos;
 import com.example.Anarchy.domain.model.Raids;
-import com.example.Anarchy.domain.model.Role;
+import com.example.Anarchy.domain.model.Toon;
 import com.example.Anarchy.dto.PontosResponse;
 import org.springframework.stereotype.Component;
 
@@ -18,9 +17,7 @@ public class PontosResponseConverter {
                 .toon(Toon.builder()
                         .id(character.getId())
                         .level(character.getLevel())
-                        .role(Role.builder()
-                                .abreviacao(role.getAbreviacao())
-                                .build())
+                        .role(character.getRole())
                         .build())
                 .raids(Raids.builder()
                         .id(raids.getId())

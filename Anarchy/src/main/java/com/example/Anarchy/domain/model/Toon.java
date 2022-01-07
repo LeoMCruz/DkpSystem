@@ -27,8 +27,8 @@ public class Toon {
     private StatusEnum status;
     @Column
     private LocalDateTime dataCadastro;
-    @ManyToOne
-    @JoinColumn(name = "classe_id")
-    private Role role;
+    @Column
+    private String role;
+
 
 }
