@@ -11,7 +11,6 @@ public class PontosResponseConverter {
     public PontosResponse fromPontos(Pontos pontos) {
         var character = pontos.getToon();
         var raids = pontos.getRaids();
-        var role = character.getRole();
         return PontosResponse.builder()
                 .id(pontos.getId())
                 .toon(Toon.builder()
@@ -22,7 +21,6 @@ public class PontosResponseConverter {
                 .raids(Raids.builder()
                         .id(raids.getId())
                         .nome(raids.getNome())
-                        .pontos(raids.getPontos())
                         .build())
                 .build();
     }

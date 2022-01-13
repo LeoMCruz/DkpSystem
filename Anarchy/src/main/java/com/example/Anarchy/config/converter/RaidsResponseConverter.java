@@ -10,7 +10,6 @@ public class RaidsResponseConverter {
         return RaidsResponse.builder()
                 .id(raids.getId())
                 .nome(raids.getNome())
-                .pontos(raids.getPontos())
                 .build();
     }
 }

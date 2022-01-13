@@ -28,7 +28,6 @@ public class RaidsService {
          var raids = Raids.builder()
                  .id(raidsRequest.getId())
                  .nome(raidsRequest.getNome())
-                 .pontos(raidsRequest.getPontos())
                  .status(StatusEnum.ATIVO)
                  .dataCadastro(LocalDateTime.now())
                  .build();

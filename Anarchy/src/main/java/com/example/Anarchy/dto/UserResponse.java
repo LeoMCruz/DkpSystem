@@ -1,27 +1,32 @@
 package com.example.Anarchy.dto;
 
+import com.example.Anarchy.domain.model.PermissaoEnum;
+import com.example.Anarchy.domain.model.Regras;
 import com.example.Anarchy.domain.model.StatusEnum;
-import com.example.Anarchy.domain.model.User;
 import lombok.Builder;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Builder
 @Data
-public class ToonRequest {
+public class UserResponse {
     private Long id;
     @NotNull
     @NotBlank
-    private String nome;
-    private String role;
-    private StatusEnum status;
+    private String login;
     @NotNull
     @NotBlank
-    private Long level;
+    private String senha;
+    private List<Regras> regrasList;
+    @NotNull
+    @NotBlank
+    private String email;
+    private PermissaoEnum permissao;
+    private StatusEnum status;
     private LocalDateTime dataCadastro;
-    private User user;
 
 }

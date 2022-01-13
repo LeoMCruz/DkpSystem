@@ -35,6 +35,7 @@ public class ItensApi {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(itensService.salvarItens(itensRequest));
     }
+    //patch*****
     @PutMapping(value="api/v1/itens/{id}")
     public ResponseEntity<Itens> update(@PathVariable Long id, @RequestBody Itens newItens){
         return itensRepository.findById(id)

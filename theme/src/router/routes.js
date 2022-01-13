@@ -1,4 +1,5 @@
 import DashboardLayout from "@/layout/dashboard/DashboardLayout.vue";
+import LoginLayout from "@/layout/dashboard/LoginLayout.vue";
 // GeneralViews
 import NotFound from "@/pages/NotFoundPage.vue";
 
@@ -12,6 +13,11 @@ const Teste = () => import(/* webpackChunkName: "common" */ "@/pages/Teste.vue")
 const TableList = () => import(/* webpackChunkName: "common" */ "@/pages/TableList.vue");
 
 const routes = [
+  {
+    path: "/signin",
+    component: LoginLayout,
+    name: "Login"
+  },
   {
     path: "/",
     component: DashboardLayout,

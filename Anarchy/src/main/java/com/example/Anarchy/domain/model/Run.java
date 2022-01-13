@@ -13,22 +13,23 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Pontos {
+public class Run {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
     @ManyToOne
-    @JoinColumn(name = "toon_id")
-    private Toon toon;
+    @JoinColumn (name = "user_id")
+    private User user;
     @ManyToOne
-    @JoinColumn(name = "raids_id")
+    @JoinColumn (name = "raid_id")
     private Raids raids;
+    @ManyToOne
+    @JoinColumn (name = "item_id")
+    private Itens itens;
     @Column
     @Enumerated(EnumType.STRING)
     private StatusEnum status;
-    @Column
-    private Long quantidade;
     @Column
     private LocalDateTime dataCadastro;
 }

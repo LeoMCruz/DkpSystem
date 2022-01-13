@@ -47,7 +47,7 @@
               @close="close(props.item)"
               dark
             >
-              {{ props.item.quantidade }}
+              {{ props.item.level}}
               <template v-slot:input>
                 <v-text-field
                   v-model="props.item.level"

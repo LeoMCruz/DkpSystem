@@ -22,6 +22,10 @@ public class Toon {
     private String nome;
     @Column
     private Long level;
+    @Transient
+    @ManyToOne
+    @JoinColumn (name = "user_id")
+    private User user;
     @Column
     @Enumerated(EnumType.STRING)
     private StatusEnum status;

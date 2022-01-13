@@ -3,6 +3,7 @@ package com.example.Anarchy.service;
 import com.example.Anarchy.config.converter.ToonResponseConverter;
 import com.example.Anarchy.domain.model.StatusEnum;
 import com.example.Anarchy.domain.model.Toon;
+import com.example.Anarchy.domain.model.User;
 import com.example.Anarchy.domain.repository.ToonRepository;
 import com.example.Anarchy.dto.ToonRequest;
 import com.example.Anarchy.dto.ToonResponse;
@@ -24,8 +25,7 @@ public class ToonService {
     }
 
     public ToonResponse salvarToon(ToonRequest toonRequest){
-        var classeResquest = toonRequest.getRole();
-
+        var user = toonRequest.getUser();
         var toon = Toon.builder()
                 .id(toonRequest.getId())
                 .nome(toonRequest.getNome())
@@ -33,6 +33,9 @@ public class ToonService {
                 .dataCadastro(LocalDateTime.now())
                 .role(toonRequest.getRole())
                 .level(toonRequest.getLevel())
+                .user(User.builder()
+                        .login(user.getLogin())
+                        .build())
                 .build();
         toonRepository.save(toon);
         return toonResponseConverter.fromToon(toon);

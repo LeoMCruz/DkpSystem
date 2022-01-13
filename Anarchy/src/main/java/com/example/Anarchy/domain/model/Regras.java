@@ -4,25 +4,24 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Raids {
+public class Regras implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
     private Long id;
     @Column
-    private String nome;
-    @Column
-    @Enumerated(EnumType.STRING)
-    private StatusEnum status;
-    @Column
-    private LocalDateTime dataCadastro;
+    private String nomeRegra;
+
+    @Override
+    public String getAuthority() {
+        return this.nomeRegra;
+    }
 }

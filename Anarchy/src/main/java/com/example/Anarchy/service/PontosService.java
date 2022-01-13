@@ -37,7 +37,6 @@ public class PontosService {
                 .raids(Raids.builder()
                         .id(raids.getId())
                         .nome(raids.getNome())
-                        .pontos(raids.getPontos())
                         .build())
                 .dataCadastro(LocalDateTime.now())
                 .status(StatusEnum.ATIVO)
