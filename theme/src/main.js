@@ -22,6 +22,8 @@ import BlackDashboard from "./plugins/blackDashboard";
 import i18n from "./i18n"
 import './registerServiceWorker'
 import vuetify from './plugins/vuetify'
+import VueSession from "vue-session";
+Vue.use(VueSession);
 Vue.use(BlackDashboard);
 Vue.use(VueRouter);
 Vue.use(RouterPrefetch);

@@ -21,6 +21,7 @@
     "vue-i18n": "^8.18.2",
     "vue-router": "^3.3.4",
     "vue-router-prefetch": "^1.6.0",
+    "vue-session": "^1.0.0",
     "vue2-transitions": "^0.3.0",
     "vuetify": "^2.6.2"
   },

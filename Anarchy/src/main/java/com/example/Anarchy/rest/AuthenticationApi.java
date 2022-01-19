@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,6 +27,7 @@ public class AuthenticationApi {
     @Value("${anarchy.auth.expirationTime}")
     private Long tokenExpire;
 
+    @Transactional(readOnly = true)
     @PostMapping(value = "/api/v1/oauth/token", consumes = "application/json", produces = "application/json")
     public ResponseEntity<AuthenticationResponse> autenticar(@RequestBody AuthenticationRequest oauthRequest){
         var authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(oauthRequest.getUsername(),
@@ -33,6 +35,8 @@ public class AuthenticationApi {
         var user = (User) authentication.getPrincipal();
         var token = JWT.create()
                 .withClaim("id", user.getId())
+                .withArrayClaim("roles", user.getPerfilAcesso() == null? new String[0] : user.getPerfilAcesso().getRegrasList().stream()
+                        .map(value-> value.getNomeRegra()).toArray((String[]::new)))
                 .withIssuedAt(new Date())
                 .withExpiresAt(new Date(System.currentTimeMillis()+tokenExpire*1000))
                 .sign(Algorithm.HMAC256(tokenPassword));

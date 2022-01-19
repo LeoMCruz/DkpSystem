@@ -12,8 +12,7 @@ import java.util.List;
 
 @Builder
 @Data
-public class UserResponse {
-    private Long id;
+public class LoginResponse {
     @NotNull
     @NotBlank
     private String login;

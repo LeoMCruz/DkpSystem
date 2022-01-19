@@ -10,7 +10,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Collection;
-import java.util.List;
 
 @Entity
 @Data
@@ -27,17 +26,9 @@ public class User implements UserDetails {
     private String senha;
     @Column
     private String email;
-    @ManyToMany
-    @JoinTable(
-            name = "user_regras",
-            joinColumns = @JoinColumn(
-                    name = "usuario_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "role_id", referencedColumnName = "id"))
-    private List<Regras> regrasList;
-    @Column
-    @Enumerated(EnumType.STRING)
-    private PermissaoEnum permissao;
+    @JoinColumn(name = "perfil_acesso_id")
+    @ManyToOne
+    private PerfilAcesso perfilAcesso;
     @Column
     @Enumerated(EnumType.STRING)
     private StatusEnum status;

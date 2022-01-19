@@ -1,6 +1,5 @@
 package com.example.Anarchy.dto;
 
-import com.example.Anarchy.domain.model.PermissaoEnum;
 import com.example.Anarchy.domain.model.Regras;
 import com.example.Anarchy.domain.model.StatusEnum;
 import lombok.Builder;
@@ -25,7 +24,6 @@ public class UserRequest {
     @NotNull
     @NotBlank
     private String email;
-    private PermissaoEnum permissao;
     private StatusEnum status;
     private LocalDateTime dataCadastro;
 
