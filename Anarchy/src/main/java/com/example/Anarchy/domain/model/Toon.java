@@ -22,8 +22,8 @@ public class Toon {
     private String nome;
     @Column
     private Long level;
-    @Transient
-    @ManyToOne
+    //@Transient
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn (name = "user_id")
     private User user;
     @Column
@@ -33,6 +33,9 @@ public class Toon {
     private LocalDateTime dataCadastro;
     @Column
     private String role;
+    @Column
+    @Enumerated(EnumType.STRING)
+    private CharacterTypeEnum characterTypeEnum;
 
 
 }

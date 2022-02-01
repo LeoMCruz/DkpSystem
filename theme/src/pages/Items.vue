@@ -224,7 +224,7 @@ export default {
         console.log(resp);
         this.itens = resp.data;
         this.lLista = false;
-      });
+      })
     },
     carregarArmas() {
       this.lLista = true;

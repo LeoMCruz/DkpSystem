@@ -1,6 +1,7 @@
 package com.example.Anarchy.service;
 
 import com.example.Anarchy.config.converter.UserResponseConverter;
+import com.example.Anarchy.domain.model.PerfilAcesso;
 import com.example.Anarchy.domain.model.StatusEnum;
 import com.example.Anarchy.domain.model.User;
 import com.example.Anarchy.domain.repository.UserRepository;
@@ -27,14 +28,15 @@ public class UserService {
     }
 
     public UserResponse salvarUser(UserRequest userRequest){
-        var regras = userRequest.getRegrasList();
+        var perfilAcesso = userRequest.getPerfilAcesso();
         var user = User.builder()
-                .login(userRequest.getLogin())
                 .email(userRequest.getEmail())
                 .senha(passwordEncoder.encode(userRequest.getSenha())) //LEO FDP
                 .dataCadastro(LocalDateTime.now())
                 .status(StatusEnum.ATIVO)
-            //    .regrasList(userRequest.getRegrasList())
+                .perfilAcesso(PerfilAcesso.builder()
+                     .id(perfilAcesso.getId())
+                     .build())
                 .build();
         userRepository.save(user);
         return userResponseConverter.fromUser(user);

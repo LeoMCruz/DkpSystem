@@ -8,6 +8,7 @@ import com.example.Anarchy.service.ToonService;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,6 +24,7 @@ public class ToonApi {
         this.toonRepository = toonRepository;
     }
     @PostMapping(value = "/api/v1/toon", consumes = "application/json", produces = "application/json")
+    @PreAuthorize("hasAuthority('cadastra-personagem')")
     public ResponseEntity<?> save(@RequestBody ToonRequest toonRequest){
         //CONFERE SE O ID EXISTE E CRIA
         if(toonRequest.getId() != null)
@@ -34,11 +36,13 @@ public class ToonApi {
 
     }
     @GetMapping(value = "/api/v1/toon", produces = "application/json")
+    @PreAuthorize("hasAuthority('consulta-personagem')")
     public ResponseEntity<List<ToonResponse>> findAll(Pageable pageable){
         return ResponseEntity.ok(toonService.buscarTodos(pageable));
     }
 
     @GetMapping(value = "/api/v1/toon/{id}", produces = "application/json")
+    @PreAuthorize("hasAuthority('consulta-personagem')")
     public ResponseEntity<?> findById(@PathVariable Long id){
         var toonResponse = toonService.buscarById(id);
         if(toonResponse == null)
@@ -47,6 +51,7 @@ public class ToonApi {
         return ResponseEntity.ok(toonResponse);
     }
     @PutMapping(value="api/v1/toon/{id}")
+    @PreAuthorize("hasAuthority('altera-personagem')")
     public ResponseEntity<Toon> update(@PathVariable Long id, @RequestBody Toon changeLvl){
         return toonRepository.findById(id)
                 .map(toon -> {

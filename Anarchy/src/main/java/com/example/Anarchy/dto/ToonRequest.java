@@ -1,5 +1,6 @@
 package com.example.Anarchy.dto;
 
+import com.example.Anarchy.domain.model.CharacterTypeEnum;
 import com.example.Anarchy.domain.model.StatusEnum;
 import com.example.Anarchy.domain.model.User;
 import lombok.Builder;
@@ -16,12 +17,17 @@ public class ToonRequest {
     @NotNull
     @NotBlank
     private String nome;
+    @NotNull
+    @NotBlank
     private String role;
     private StatusEnum status;
     @NotNull
     @NotBlank
     private Long level;
     private LocalDateTime dataCadastro;
+    @NotNull
+    @NotBlank
     private User user;
+    private CharacterTypeEnum characterTypeEnum;
 
 }

@@ -21,19 +21,19 @@ public class User implements UserDetails {
     @Id
     private Long id;
     @Column
-    private String login;
-    @Column
     private String senha;
     @Column
     private String email;
     @JoinColumn(name = "perfil_acesso_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private PerfilAcesso perfilAcesso;
     @Column
     @Enumerated(EnumType.STRING)
     private StatusEnum status;
     @Column
     private LocalDateTime dataCadastro;
+    @Column
+    private String clan;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -47,7 +47,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return this.login;
+        return this.email;
     }
 
     @Override

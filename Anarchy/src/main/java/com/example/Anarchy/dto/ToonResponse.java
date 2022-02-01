@@ -1,5 +1,6 @@
 package com.example.Anarchy.dto;
 
+import com.example.Anarchy.domain.model.CharacterTypeEnum;
 import com.example.Anarchy.domain.model.StatusEnum;
 import com.example.Anarchy.domain.model.User;
 import lombok.Builder;
@@ -17,5 +18,6 @@ public class ToonResponse {
     private String role;
     private Long level;
     private User user;
+    private CharacterTypeEnum characterTypeEnum;
 
 }

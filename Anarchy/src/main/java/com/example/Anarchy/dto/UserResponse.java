@@ -1,5 +1,6 @@
 package com.example.Anarchy.dto;
 
+import com.example.Anarchy.domain.model.PerfilAcesso;
 import com.example.Anarchy.domain.model.Regras;
 import com.example.Anarchy.domain.model.StatusEnum;
 import lombok.Builder;
@@ -16,11 +17,9 @@ public class UserResponse {
     private Long id;
     @NotNull
     @NotBlank
-    private String login;
-    @NotNull
-    @NotBlank
     private String senha;
     private List<Regras> regrasList;
+    private PerfilAcesso perfilAcesso;
     @NotNull
     @NotBlank
     private String email;

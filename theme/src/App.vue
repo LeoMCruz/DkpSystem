@@ -24,7 +24,8 @@ export default {
   async mounted() {
     // Configure token for axios call
     const token = this.$session.get("jwt");
-    api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    if(token)
+      api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     // End
 
     this.$watch("$route", this.disableRTL, { immediate: true });

@@ -20,8 +20,13 @@
             ></v-text-field>
           </v-col>
           <v-col cols="12" sm="3">
-            <v-select  v-model="select" 
-             :items="role" filled label="Role" dark></v-select>
+            <v-select
+              v-model="select"
+              :items="role"
+              filled
+              label="Role"
+              dark
+            ></v-select>
           </v-col>
           <br />
           <v-col cols="12" sm="3">
@@ -47,11 +52,10 @@
               @close="close(props.item)"
               dark
             >
-              {{ props.item.level}}
+              {{ props.item.level }}
               <template v-slot:input>
                 <v-text-field
                   v-model="props.item.level"
-                  
                   label="Edit"
                   single-line
                   dark
@@ -88,7 +92,7 @@ export default {
       snack: false,
       snackColor: "",
       snackText: "",
-      select:"",
+      select: "",
       role: [
         "Adventurer",
         "ArcanaLord",
@@ -149,15 +153,15 @@ export default {
     async enviar() {
       api
         .post("/toon", {
-            nome:this.nome,
-            level:this.level,
-            role:this.select,
+          nome: this.nome,
+          level: this.level,
+          role: this.select,
         })
         .then(() => {
           this.carregarTodos();
           this.nome = 0;
           this.level = "";
-          this.select="";
+          this.select = "";
         })
         .catch((error) => {
           console.log(error);
